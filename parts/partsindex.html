@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"> 
+    <script>
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /*loop through a collection of all HTML elements:*/
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain attribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /*make an HTTP request using the attribute value as the file name:*/
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /*remove the attribute, and call this function once more:*/
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }      
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /*exit the function:*/
+            return;
+          }
+        }
+      };
+      </script>  
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>jQuery Tree Nav Example  </title>
+      <!--Google Fonts-->
+      <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+      <!--Font Awesome-->
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+      <!--Tree Nav CSS-->
+      <link rel="stylesheet" href="../css/tree-nav.css"/>
+      <link rel="stylesheet" href="../css/indexcss.css"/>
+   </head>
+   <body>     
+      <header class="header">           
+         <a href="../../index.html">
+         <td id="projectlogo"><img alt="Logo" src="../manual/images/donkey.gif"  width="50" height="40"/></td>         
+         <div class="headtext" style="color:white">FREE PLC</div>                 
+         </td></a>
+         <div class="headtext" style="color:white;margin-left:300px;font-size: 25px;padding-top:10px">Parts and component source</div> 
+      <!--h1 class="headtext">Donkey PLC</h1>         
+      <img src="donkey.gif" width="50" height="40"-->     
+      </header>   
+      <nav class="tree-nav default" style="width:400px">
+         <ul class="main-items">                      
+            <li data-type="folder">
+               <a href="#PS11">Main boards</a>
+               <ul>
+                  <li><a href="#PS11">USB expansion and input x4 </a> </li>
+                  <li><a href="#PS12">Four USB expansions and user define program chip</a> </li>                        
+               </ul>
+            </li>            
+            <li data-type="folder">
+               <a href="#RY11">Featured relay output</a>
+               <ul>
+                  <li><a href="#RY11">Four relays</a> </li>
+                  <li><a href="#RY12">Four relays with MQTT broker</a> </li>  
+                  <li><a href="#RY13">Mqtt relays</a> </li>                 
+                  <li><a href="#RY14">Solid state Relays</a> </li>                   
+               </ul>
+            </li>
+            <li data-type="folder">
+               <a href="#RY11">Input module</a>
+               <ul>
+                  <li><a href="#RY11">Four relays</a> </li>
+                  <li><a href="#RY12">Four relays with MQTT broker</a> </li>  
+                  <li><a href="#RY13">Mqtt relays</a> </li>                 
+                  <li><a href="#RY14">Solid state Relays</a> </li>                   
+               </ul>
+            </li>
+            <li data-type="folder">
+               <a href="#RY11">Analog Input/output</a>
+               <ul>
+                  <li><a href="#RY11">Four relays</a> </li>
+                  <li><a href="#RY12">Four relays with MQTT broker</a> </li>  
+                  <li><a href="#RY13">Mqtt relays</a> </li>                 
+                  <li><a href="#RY14">Solid state Relays</a> </li>                   
+               </ul>
+            </li>
+            <li data-type="folder">
+               <a href="#RY11">Graphic user interface</a>
+               <ul>
+                  <li><a href="#RY11">Four relays</a> </li>
+                  <li><a href="#RY12">Four relays with MQTT broker</a> </li>  
+                  <li><a href="#RY13">Mqtt relays</a> </li>                 
+                  <li><a href="#RY14">Solid state Relays</a> </li>                   
+               </ul>
+            </li>
+            <li data-type="folder">
+               <a href="#nd11">3nd parties board</a>
+               <ul>
+                  <li><a href="#nd11">Hardware requirement</a> </li>
+                  <li><a href="#nd12">Firmware upload</a> </li>
+                  <li><a href="#nd13">Config PLC</a> </li>                 
+               </ul>
+            </li>                     
+      </nav>
+      <div class="content" style="margin-left:400px">   
+         <div w3-include-html="parts.html" class="context"></div>                       
+         <script>
+         includeHTML();
+         </script>                             
+      </div>    
+    <!--jQuery-->                 
+    <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+      <!--Tree Nav Js-->
+      <script src="../JS/jquery.treenav.js"></script>
+      <script>
+         $(document).ready(function(){
+         $(".tree-nav").treeNav();
+         });
+      </script>
+   </body>
+</html>
+
+
+<!--
+<video width="400" controls>
+  <source src="mov_bbb.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML video.
+</video>
+
+<p>
+Video courtesy of 
+<a href="https://www.bigbuckbunny.org/" target="_blank">Big Buck Bunny</a>.
+</p>
+-->
+

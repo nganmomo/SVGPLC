@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparison Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<a class="anchor" id="BP16"></a><br><br>
+<h2>Step by step Setup Wifi</h2>
+<p>(1) Set dip switch in SSID and PW in on position</p>
+<img src="./images/SetupDIP.png" style="position:relative; left:15%; width:500px">
+<p>(2) USe serial port porgram, like Arduino IDE putty or any serial port program to link up the PLC.</p>
+<p>(3) Select proport comport channel, press reset button, your should screen as below:</p>
+<img src="./images/inputssidpw.png" style="position:relative; left:15%; width:500px">
+<p>(3) After input SSID and password,screen will become as below:</p>
+<img src="./images/afterssidpw.png" style="position:relative; left:15%; width:500px">
+<p>Return the setup DIP switch to normal, if SSID and password correct, PLC will link to network. When press reset, the screen will show URL like 192.168.x.x, take down the URL for start program</P>
+<img src="./images/TakedownURL.png" style="position:relative; left:15%; width:500px">
+<p>Use browser to open PLC interface screen, as The URL is not secure https, warning will appear.</p>
+<img src="./images/initscreen.png" style="position:relative; left:15%; width:500px">
+</body>
+</html>
+ 
